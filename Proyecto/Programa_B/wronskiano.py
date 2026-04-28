@@ -1,4 +1,4 @@
-import sympy as sp
+"""import sympy as sp
 
 class PadreB:
     def __init__(self, f1, f2, f3):
@@ -16,7 +16,7 @@ class PadreB:
             [sp.diff(self.f1, self.x, 2), sp.diff(self.f2, self.x, 2), sp.diff(self.f3, self.x, 2)]
         ])
 
-        self.wronskiano = M.toList()
+        M.toList()
         return self.wronskiano
 
     def determinante(self, matriz):
@@ -50,3 +50,47 @@ class PadreB:
             return "El sistema de funciones ES linealmente dependiente"
         else:
             return "El sistema de funciones NO ES linealmente dependiente ES INDIE"
+"""
+import sympy as sp
+
+class PadreB:
+    def __init__(self, f1, f2, f3, valor):
+        self.f1 = f1
+        self.f2 = f2
+        self.f3 = f3
+        self.valor = valor
+        self.x = sp.symbols('x')
+        self.wronskiano = None
+        self.det = None
+
+    def calcularWronskiano(self):
+        M = sp.Matrix([
+            [self.f1, self.f2, self.f3],
+            [sp.diff(self.f1, self.x), sp.diff(self.f2, self.x), sp.diff(self.f3, self.x)],
+            [sp.diff(self.f1, self.x, 2), sp.diff(self.f2, self.x, 2), sp.diff(self.f3, self.x, 2)]
+        ])
+
+        self.wronskiano = M
+        return M
+
+    def determinante(self):
+        if self.wronskiano is None:
+            raise ValueError("Primero calcula el Wronskiano")
+
+        self.det = self.wronskiano.det()
+        return self.det
+
+    def evaluarDeterminante(self):
+        valor = self.valor
+        if self.det is None:
+            raise ValueError("Primero calcula el determinante")
+
+        return self.det.subs(self.x, valor)
+
+    def esCero(self):
+        valor = self.valor
+        detEvaluado = self.evaluarDeterminante()
+        if sp.simplify(detEvaluado) == 0:
+            return "El sistema ES linealmente dependiente"
+        else:
+            return "El sistema ES linealmente independiente"

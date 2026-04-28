@@ -144,6 +144,19 @@ QTabBar::tab:selected {
      <item row="12" column="0">
       <widget class="QLineEdit" name="determinante"/>
      </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>VALOR</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLineEdit" name="valor"/>
+     </item>
     </layout>
    </item>
   </layout>
