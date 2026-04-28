@@ -12,15 +12,11 @@ class InterfazB(QDialog): #HEREDAS DE UN DIALOG
         self.pushButtonB.clicked.connect(self.calcularB)
 
     def calcularB(self):
-        try:
             f1 = float(self.funcion1.text())
-            f2 = float(self.funcion2.text())
-            f3 = float(self.funcion3.text())
+            f2 = self.funcion2.text()
+            f3 = self.funcion3.text()
             
 
             modelo = PadreB(f1,f2,f3)
-            modelo.esCero()
-            self.resultadoDet.setText(str(modelo))
-
-        except:
-            QMessageBox.warning(self, "Error", "Entrada inválida")
+            res = modelo.esCero()
+            self.resultadoDet.setText(str(res))

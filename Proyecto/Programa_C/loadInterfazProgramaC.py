@@ -27,7 +27,6 @@ class InterfazC(QDialog): #HEREDAS DE UN DIALOG
         self.pushButtonC.clicked.connect(self.calcularC)
 
     def calcularC(self):
-        try:
             a = float(self.a.text())
             b = float(self.b.text())
             c = float(self.c.text())
@@ -37,5 +36,4 @@ class InterfazC(QDialog): #HEREDAS DE UN DIALOG
             
             self.resultadoSolGen.setText(resultado)
 
-        except:
-            QMessageBox.warning(self, "Error", "Entrada inválida")
+        
