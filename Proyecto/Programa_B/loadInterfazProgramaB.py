@@ -29,8 +29,9 @@ class InterfazB(QDialog): #HEREDAS DE UN DIALOG
             modelo.calcularWronskiano()
             modelo.determinante()
             res = modelo.esCero()
+            det = modelo.determinante()
             self.resultadoDet.setText(str(res))
-
+            self.determinante.setText(str(det))
             """
             modelo = PadreB(f1,f2,f3,valor)
             res = modelo.esCero()
